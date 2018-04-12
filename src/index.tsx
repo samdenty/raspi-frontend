@@ -5,20 +5,17 @@ import GPIO from './gpio/raspberry-pi/3'
 
 class App extends React.Component {
   state = {
-    pins: [true, true]
+    pins: Array(42).fill(true)
   }
   
   onToggle = (id: number) => {
     console.log(id)
     const { pins } = this.state
-    const pin = pins[id - 1]
     
-    if (pin) {
-      pins[id - 1] = !pin
-      this.setState({
-        pins
-      })
-    }
+    pins[id] = !pins[id]
+    this.setState({
+      pins
+    })
   }
 
   render() {
